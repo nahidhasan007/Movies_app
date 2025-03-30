@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, library_private_types_in_public_api, prefer_final_fields, unused_local_variable, avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:flutter_mvvm_architecture/res/components/text_input_container.dart';
 import 'package:flutter_mvvm_architecture/utils/utils.dart';
 import 'package:provider/provider.dart';
 
@@ -58,21 +59,35 @@ class _LoginViewState extends State<LoginScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: [ 
-              TextFormField(
-                controller: _emailController,
-                keyboardType: TextInputType.emailAddress,
-                focusNode: emailFocusNode,
-                decoration: const InputDecoration(
-                    hintText: 'Email',
-                    labelText: 'Email',
-                    prefixIcon: Icon(Icons.email_outlined)),
-                onFieldSubmitted: (valu) {
-                  Utils.fieldFocusChange(
-                      context, emailFocusNode, passwordFocusNode);
-                  // FocusScope.of(context).requestFocus(passwordFocusNode);
-                },
+            children: [
+              CustomTextField(
+                  controller: _emailController,
+                  hintText: 'Email',
+                  labelText: 'Email',
+                  keyboardType: TextInputType.emailAddress,
+                  prefixIcon: Icons.email_outlined,
+                  focusNode: emailFocusNode,
+                  onFiledValue: (emailValue){
+                    print(emailValue);
+                    Utils.fieldFocusChange(
+                        context, emailFocusNode, passwordFocusNode);
+                  },
+                  obscureText: false
               ),
+              // TextFormField(
+              //   controller: _emailController,
+              //   keyboardType: TextInputType.emailAddress,
+              //   focusNode: emailFocusNode,
+              //   decoration: const InputDecoration(
+              //       hintText: 'Email',
+              //       labelText: 'Email',
+              //       prefixIcon: Icon(Icons.email_outlined)),
+              //   onFieldSubmitted: (valu) {
+              //     Utils.fieldFocusChange(
+              //         context, emailFocusNode, passwordFocusNode);
+              //     // FocusScope.of(context).requestFocus(passwordFocusNode);
+              //   },
+              // ),
               ValueListenableBuilder(
                   valueListenable: _obsecurePassword,
                   builder: (context, value, child) {
