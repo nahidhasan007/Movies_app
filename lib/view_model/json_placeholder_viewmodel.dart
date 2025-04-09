@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_mvvm_architecture/res/app_url.dart';
 import '../data/network/BaseApiServices.dart';
@@ -6,7 +5,7 @@ import '../data/network/NetworkApiService.dart';
 import '../model/posts.dart';
 
 class JsonPlaceholderViewModel extends ChangeNotifier {
-  BaseApiServices _apiServices = NetworkApiService();
+  final BaseApiServices _apiServices = NetworkApiService();
   List<Post> _posts = [];
 
   List<Post> get posts => _posts;

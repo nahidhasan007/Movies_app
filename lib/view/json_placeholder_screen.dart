@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mvvm_architecture/view_model/json_placeholder_viewmodel.dart';
 import 'package:provider/provider.dart';
@@ -11,7 +10,6 @@ class JsonPlaceholderScreen extends StatefulWidget {
 }
 
 class _JsonPlaceHolderScreenState extends State<JsonPlaceholderScreen> {
-  JsonPlaceholderViewModel postsViewModel = JsonPlaceholderViewModel();
 
   @override
   void initState() {
@@ -27,22 +25,22 @@ class _JsonPlaceHolderScreenState extends State<JsonPlaceholderScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: Text("Posts"), actions: []),
-        body: ChangeNotifierProvider<JsonPlaceholderViewModel>(
-          create: (BuildContext context) => postsViewModel,
-          child:
-              Consumer<JsonPlaceholderViewModel>(builder: (context, value, _) {
+        body: Consumer<JsonPlaceholderViewModel>(
+          builder: (BuildContext context, viewModel,_) {
+            if(viewModel.posts.isEmpty){
+              return const Center(child: CircularProgressIndicator());
+            }
             return ListView.builder(
-                itemCount: value.posts.length,
+                itemCount: viewModel.posts.length,
                 itemBuilder: (context, index) {
                   return Card(
                     child: ListTile(
-                      title: Text(value.posts[index].title.toString()),
-                      subtitle: Text(value.posts[index].body.toString()),
+                      title: Text(viewModel.posts[index].title.toString()),
+                      subtitle: Text(viewModel.posts[index].body.toString()),
                     ),
                   );
                 });
-            return Container();
-          }),
+          },
         ));
   }
 }
