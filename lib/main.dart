@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mvvm_architecture/utils/routes/routes.dart';
 import 'package:flutter_mvvm_architecture/utils/routes/routes_name.dart';
 import 'package:flutter_mvvm_architecture/view_model/auth_view_model.dart';
+import 'package:flutter_mvvm_architecture/view_model/json_placeholder_viewmodel.dart';
 import 'package:flutter_mvvm_architecture/view_model/user_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -24,7 +25,8 @@ class _MyAppState extends State<MyApp> {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_)=>AuthViewModel()),
-        ChangeNotifierProvider(create: (_)=>UserViewModel())
+        ChangeNotifierProvider(create: (_)=>UserViewModel()),
+        ChangeNotifierProvider(create: (_)=>JsonPlaceholderViewModel())
       ],
       child: MaterialApp(
         theme: ThemeData(primarySwatch: Colors.deepPurple),

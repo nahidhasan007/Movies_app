@@ -6,4 +6,6 @@ class RoutesName {
 
   //home screen routes name
   static const String home = 'home_sceen';
+  //placeholder screen
+  static const String placeHolder = "placeHolder_screen";
 }

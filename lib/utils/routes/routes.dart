@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mvvm_architecture/view/login_view.dart';
 
 import '../../view/home_screen.dart';
+import '../../view/json_placeholder_screen.dart';
 import '../../view/signp_view.dart';
 import '../../view/splash_view.dart';
 import 'routes_name.dart';
@@ -22,6 +23,8 @@ class Routes {
             builder: (BuildContext context) => LoginScreen());
       case RoutesName.signUp:
       return MaterialPageRoute(builder: (BuildContext context) => const SignUpView());
+      case RoutesName.placeHolder:
+        return MaterialPageRoute(builder: (BuildContext context) => const JsonPlaceholderScreen());
 
       default:
         return MaterialPageRoute(builder: (_) {

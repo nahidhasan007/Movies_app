@@ -39,7 +39,7 @@ class _LoginViewState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final authViewMode = Provider.of<AuthViewModel>(context);
+    final authViewModel = Provider.of<AuthViewModel>(context);
 
     final height = MediaQuery.of(context).size.height * 1;
     return Scaffold(
@@ -116,7 +116,7 @@ class _LoginViewState extends State<LoginScreen> {
               ),
               RoundButton(
                 title: 'Login',
-                loading: authViewMode.loading,
+                loading: authViewModel.loading,
                 onPress: () {
                   if (_emailController.text.isEmpty) {
                     Utils.flushBarErrorMessage('Please enter email', context);
@@ -135,7 +135,7 @@ class _LoginViewState extends State<LoginScreen> {
                       'email':'eve.holt@reqres.in',
                       'password': 'cityslicka',
                     };
-                    authViewMode.loginApi(data, context);
+                    authViewModel.loginApi(data, context);
                     // eve.holt@reqres.in, password: cityslicka
                     print('api hit');
                   }
@@ -148,7 +148,16 @@ class _LoginViewState extends State<LoginScreen> {
                   onTap: () {
                     Navigator.pushNamed(context, RoutesName.signUp);
                   },
-                  child: Text("Don't have an accont? Sign Up"))
+                  child: Text("Don't have an accont? Sign Up")),
+
+              SizedBox(
+                height: height * .02,
+              ),
+              InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(context, RoutesName.placeHolder);
+                  },
+                  child: Text("Want to see posts?? Click Here"))
             ],
           ),
         ),
