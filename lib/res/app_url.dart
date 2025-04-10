@@ -16,4 +16,6 @@ class AppUrl {
 
   static var posts = placeholderBaseUrl + 'posts';
 
+  static var picsum_images = 'https://picsum.photos/v2/list';
+
 }

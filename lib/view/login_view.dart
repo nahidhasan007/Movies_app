@@ -157,7 +157,15 @@ class _LoginViewState extends State<LoginScreen> {
                   onTap: () {
                     Navigator.pushNamed(context, RoutesName.placeHolder);
                   },
-                  child: Text("Want to see posts?? Click Here"))
+                  child: Text("Want to see posts?? Click Here")),
+              SizedBox(
+                height: height * .02,
+              ),
+              InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(context, RoutesName.imageScreen);
+                  },
+                  child: Text("See Images"))
             ],
           ),
         ),

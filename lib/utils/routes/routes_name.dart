@@ -8,4 +8,5 @@ class RoutesName {
   static const String home = 'home_sceen';
   //placeholder screen
   static const String placeHolder = "placeHolder_screen";
+  static const String imageScreen = "image_screen";
 }

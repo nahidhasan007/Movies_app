@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_mvvm_architecture/view/images_screen.dart';
 import 'package:flutter_mvvm_architecture/view/login_view.dart';
 
 import '../../view/home_screen.dart';
@@ -25,6 +26,8 @@ class Routes {
       return MaterialPageRoute(builder: (BuildContext context) => const SignUpView());
       case RoutesName.placeHolder:
         return MaterialPageRoute(builder: (BuildContext context) => const JsonPlaceholderScreen());
+      case RoutesName.imageScreen:
+        return MaterialPageRoute(builder: (BuildContext context) => const ImagesScreen());
 
       default:
         return MaterialPageRoute(builder: (_) {

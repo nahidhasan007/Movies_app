@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mvvm_architecture/utils/routes/routes.dart';
 import 'package:flutter_mvvm_architecture/utils/routes/routes_name.dart';
 import 'package:flutter_mvvm_architecture/view_model/auth_view_model.dart';
+import 'package:flutter_mvvm_architecture/view_model/demo_images_view_model.dart';
 import 'package:flutter_mvvm_architecture/view_model/json_placeholder_viewmodel.dart';
 import 'package:flutter_mvvm_architecture/view_model/user_view_model.dart';
 import 'package:provider/provider.dart';
+import 'package:provider/single_child_widget.dart';
 
 void main(List<String> args) {
   runApp(MyApp());
@@ -23,11 +25,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_)=>AuthViewModel()),
-        ChangeNotifierProvider(create: (_)=>UserViewModel()),
-        ChangeNotifierProvider(create: (_)=>JsonPlaceholderViewModel())
-      ],
+      providers: buildProviders(),
       child: MaterialApp(
         theme: ThemeData(primarySwatch: Colors.deepPurple),
         debugShowCheckedModeBanner: false,
@@ -36,4 +34,13 @@ class _MyAppState extends State<MyApp> {
       ),
     );
   }
+}
+
+List<SingleChildWidget> buildProviders() {
+  return [
+    ChangeNotifierProvider(create: (_) => AuthViewModel()),
+    ChangeNotifierProvider(create: (_) => UserViewModel()),
+    ChangeNotifierProvider(create: (_) => JsonPlaceholderViewModel()),
+    ChangeNotifierProvider(create: (_) => ImagesViewModel()),
+  ];
 }
